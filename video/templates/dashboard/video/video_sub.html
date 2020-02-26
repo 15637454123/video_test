@@ -1,0 +1,26 @@
+<%inherit file="../base.html" />
+<%! from django.shortcuts import reverse %>
+<%def name="css()">
+<style>
+    h1 {
+        margin: 5%;
+    }
+</style>
+<link rel="stylesheet" href="/static/dashboard/css/video_sub.css">
+</%def>
+<%def name='content()'>
+<h1>${video.name}</h1>
+<h2>集数</h2>
+<ul>
+    % for video_sub in video.video_sub.all():
+    <a href="${video_sub.url}">第${video_sub.number}集</a>
+    %endfor
+</ul>
+<form class="form-horizontal edit-area add-video-area add-url" action="" method="post">
+    ${csrf_token}
+    <label>添加地址</label>
+    <input type="text" name="url" class="form-control">
+    <input type="submit" value="添加" class="btn btn-info" id="add-url-btn">
+</form>
+
+</%def>
