@@ -1,7 +1,7 @@
 # coding:utf-8
 
 from django.db import models
-from ..consts import VideoType, FromType, NationalityType
+from ..consts import VideoType, FromType, NationalityType, IdentityType
 
 
 class Video(models.Model):

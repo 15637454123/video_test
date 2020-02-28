@@ -21,6 +21,7 @@ from app.client import urls as client_urls
 
 
 urlpatterns = [
+
     path('dashboard/', include(dashboard_urls)),
     path('client/', include(client_urls))
 ]
