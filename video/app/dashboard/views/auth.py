@@ -71,7 +71,7 @@ class AdminManger(View):
 
         # 分页
         page = request.GET.get('page', 1)
-        p = Paginator(users, 2)
+        p = Paginator(users, 10)
         total_page = p.num_pages  # 取得分页数量
 
         # 防止反序

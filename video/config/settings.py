@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+import djcelery
+
+djcelery.setup_loader()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -37,8 +40,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app'
+    'app',   # app应用
+    'djcelery'  # 异步队列应用
 ]
+
+# 异步队列配置
+BROKER_URL = 'redis://127.0.0.1:6379/2'
+CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379/3'
+CELERY_IMPORTS = ('app.tasks.task')  # celery异步队列路径
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -124,3 +133,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
+
+# 七牛云相关配置
+
+QINIU_AK = 'IT_vnqMSR00WtIdibc8T-7VrTgs4yvBUF_K26RU5'
+QINIU_SK = '76JSUiA6tiIU2Qx-TxXx36QpCkfIXLLFXRj_-F3X'
+# 七牛云存储空间名称
+QINIU_VIDEO = 'djangofirstvideo'
+QINIU_VIDEO_URL = 'http://q6g63bl8e.bkt.clouddn.com'

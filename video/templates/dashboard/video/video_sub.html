@@ -71,7 +71,11 @@ ${error}
             % for video_sub in video.video_sub.all():
                 <tr>
                 <td><a href="${video_sub.url}">第${video_sub.number}集</a></td>
+<!--                % if FromType(video.from_to) == FromType.custom:-->
+<!--                <td><a href="${video_sub.url}"><p class="info">${video_sub.url or '处理中请稍后'}</p></a></td>-->
+<!--                % else:-->
                 <td><a href="${video_sub.url}"><p class="info">${video_sub.url}</p></a></td>
+<!--                %endif-->
                 <td>
                     <button class="btn btn-default"><a href="${video_sub.url}">查看</a></button>
                     <button class="btn btn-default update-btn" data-id="${video_sub.id}" data-url="${video_sub.url}" data-number="${video_sub.number}">编辑</button>
