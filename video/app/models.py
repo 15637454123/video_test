@@ -2,3 +2,4 @@
 
 from .model.auth import ClientUser
 from .model.viedo import Video, VideoStar, VideoSub
+from .model.comment import Comment
